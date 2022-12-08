@@ -1,0 +1,176 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&family=Source+Code+Pro:wght@300&family=Ubuntu:wght@500&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Slab', serif;
+}
+
+.container{
+    width: 90vw;
+    height: 80vh;
+    /* background-color: aquamarine; */
+    margin: 25px auto ;
+    /* position: absolute; */
+    box-sizing: border-box;
+    /* border: 2px solid black; */
+}
+
+.headingInfo{
+    width:90%;
+    height: 50px;
+    background-color: bisque;
+    margin: 5px auto;
+    font-family: 'Roboto Slab', serif;
+    font-size: 2em;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    
+}
+
+.bodyInfo{
+    width: 90%;
+    height: auto;
+    /* background-color: aqua; */
+    margin: 15px auto ;
+    display: flex;
+ 
+}
+
+.leftSM-30{
+
+    height: 25vw;
+    width: 35%;
+    /* background-color: rgb(192, 178, 178); */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    box-shadow: 7px salmon inset;
+    /* margin-right: 20px; */
+}
+
+.rightSm-70{
+    width: 60%;
+    height: auto;
+    /* background-color: rgb(192, 178, 178); */
+    box-sizing: border-box;
+    margin-left: 6%;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid black;
+    box-shadow: 7px salmon inset;
+}
+
+.headingLeft{
+    width: 100%;
+    height: 55px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto Slab', serif;
+    font-size: 2em;
+    margin-bottom: 5px;
+
+}
+
+.headingRight{
+width: 100%;
+height: 50px;
+background-color: red;
+display: flex;
+justify-content: center;
+font-family: 'Roboto Slab', serif;
+font-size: 2em;
+margin-bottom: 5px;
+}
+
+.addNew{
+    margin: 10px ;
+    display: block;
+
+}
+
+form input{
+
+    width: 80%;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 10px auto;
+    font-size: 1.2em;
+
+}
+
+form label{
+    font-size: 1.3em;
+}
+
+.btn{
+    /* font-size: 1.05em; */
+    padding: 2px 10px;
+    background-color: brown;
+    color: white;
+    border-radius: 7px;
+    float: right;
+    margin-right: 20%;
+}
+
+.showData{
+    margin-top: 5px;
+    width: 100%;
+}
+
+
+
+
+.id{
+    width: 5%;
+    /* background-color: black; */
+    margin: 5px;
+    text-align: center;
+}
+.name{
+    width: 30%;
+    /* background-color: red; */
+    margin:5px;
+    text-align: center;
+}
+.email{
+    width: 40%;
+    margin: 5px;
+    text-align: center;
+}
+
+.password{
+    width: 15%;
+    margin: 5px;
+    text-align: center;
+}
+
+.action{
+    display: flex;
+    margin: 5px;
+    width: 20%;
+    align-items: center;
+}
+
+.editForm{
+    width: 50%;
+    height: 50vh;
+    margin: auto;
+    margin-top: 20px;
+    text-align: center;
+    border: 3px solid black;
+}
+
+.buttons{
+    width: 20%;
+    float: right;
+    margin-right: 50px;
+}
+
+
+
+

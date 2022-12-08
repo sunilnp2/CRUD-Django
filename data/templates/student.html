@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD-Function Based Project</title>
+</head>
+<body>
+    <div class="container">
+        <div class="headingInfo">Function Based ModelForm CRUD Project.</div>
+        <div class="bodyInfo">
+        <div class="leftSM-30">
+            <div class="headingLeft">Add New Student</div>
+            <div class="addNew">
+                {% if messages %}
+                {% for mess in messages %}
+                <p style = "color:green; font-weight:bold; text-align:center; width:100%; background-color:lightgray;">{{mess}}</p>
+                {% endfor %}
+                {% endif %}
+                <form method = "POST" novalidate>
+                    {% csrf_token %}
+                    {{ form.non_field_errors}}
+                    {% for field in fm %}
+                    <div><label for="name">{{field.label_tag}}  </label> <br>
+                    {% comment %} <input type="text" placeholder="Enter Full Name" name="name" id="name"> {% endcomment %}
+                    {{field}} <span style = "color:red; font-size:0.7px; font-weight: italic;">{{field.errors|striptags}}</span>
+                </div>
+                {% endfor %}
+                    {% comment %} <div><label for="email">Email : </label> <br>
+                    <input type="email" placeholder="Enter Email" name="email" id="email">
+                </div>
+                    <div><label for="password">Password : </label> <br>
+                    <input type="password" placeholder="Enter Password" name="password" id="password">
+                </div> {% endcomment %}
+                
+                <button class="btn" type = "submit">Add</button>
+                
+            </form>
+                </div>
+                
+            </div>
+            <div class="rightSm-70">
+                <div class="headingRight">Show Students Here</div>
+                <div class="showData" >
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="id">Id</th>
+                                <th class="name">Name</th>
+                                <th class="email">Email</th>
+                                <th class="pass">Password</th>
+                                <th class="action">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% if student %}
+                            {% for stu in student %}
+                            <tr>
+                                <td class="id">{{stu.id}}</td>
+                                <td class="name">{{stu.name}}</td>
+                                <td class="email">{{stu.email}}</td>
+                                <td class="pass">{{stu.password}}</td>
+                                <td class="action">
+                                    <button class="btn"><a href="{% url 'data:update' stu.id %}">Edit</a></button>
+                                    <button class="btn"><a href="{% url 'data:delete' stu.id %}">Delete</a></button>
+                                </td>  
+                            </tr> 
+                            
+                            {% endfor %}
+                            {% else %}
+                            <tr>
+                                <td colspan = '5' rowspan = '5' style = "color:red; text-align:center;">No students added at ! Add some </td>
+                            </tr>
+                           
+                            {% endif %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
