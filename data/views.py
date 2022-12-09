@@ -71,3 +71,32 @@ def update(request, id):
 
     return render(request, 'editStudent.html',{'fm':fm})
 
+
+def search(request):
+    if request.method == 'GET':
+        search = request.GET.get('search', None)
+        if search:
+            result = Student.objects.filter(name__icontains = search)
+        else:
+            return redirect('data:home')
+    if request.method == "POST":
+        fm = StudentForm(request.POST)
+        if fm.is_valid():
+            # name = fm.cleaned_data['name']
+            # email = fm.cleaned_data['email']
+            # pw = fm.cleaned_data['password']
+                
+            # stu = Student(
+            # name = name,
+            # email = email, 
+            # password = pw
+            # )
+            # stu.save()
+            fm.save()
+            messages.success(request, "Student Create Successfullly!")
+            return redirect('data:search')
+
+    
+    fm = StudentForm
+    context = {'fm':fm,'student':result}
+    return render(request, 'student.html', context)

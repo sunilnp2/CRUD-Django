@@ -26,9 +26,12 @@
                     {% for field in fm %}
                     <div><label for="name">{{field.label_tag}}  </label> <br>
                     {% comment %} <input type="text" placeholder="Enter Full Name" name="name" id="name"> {% endcomment %}
-                    {{field}} <span style = "color:red; font-size:0.7px; font-weight: italic;">{{field.errors|striptags}}</span>
+                    <div>{{field}}  
+                        {% for error in fm.errors %}
+                        <span style="color:red; font-weight:italic; font-size:0.7em">{{error|striptags}}</span>
+                    {% endfor %}</div>
                 </div>
-                {% endfor %}
+               
                     {% comment %} <div><label for="email">Email : </label> <br>
                     <input type="email" placeholder="Enter Email" name="email" id="email">
                 </div>
@@ -36,7 +39,8 @@
                     <input type="password" placeholder="Enter Password" name="password" id="password">
                 </div> {% endcomment %}
                 
-                <button class="btn" type = "submit">Add</button>
+                {% endfor %}
+                <button class="btn" style = "margin-bottom:5px" type = "submit">Add</button>
                 
             </form>
                 </div>
@@ -44,38 +48,48 @@
             </div>
             <div class="rightSm-70">
                 <div class="headingRight">Show Students Here</div>
+                <div class="">
+                    <form action="{% url 'data:search' %}" method="get">
+                        {% csrf_token %}
+                    <input style="padding: 2px; width: 25%;" type="text" placeholder = "search with name" name="search">
+                    <button  type="submit">Submit</button>
+                    <button><a href = "{% url 'data:home' %}"> Return</a></button>
+                </form>
+                </div>
                 <div class="showData" >
                     <table>
                         <thead>
                             <tr>
                                 <th class="id">Id</th>
                                 <th class="name">Name</th>
+                                {% comment %} <th class="name">Image</th> {% endcomment %}
                                 <th class="email">Email</th>
                                 <th class="pass">Password</th>
                                 <th class="action">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {% if student %}
+                            {% comment %} {% if student %} {% endcomment %}
                             {% for stu in student %}
                             <tr>
                                 <td class="id">{{stu.id}}</td>
                                 <td class="name">{{stu.name}}</td>
+                                {% comment %} <td class="name">{{stu.image.url}}</td> {% endcomment %}
                                 <td class="email">{{stu.email}}</td>
                                 <td class="pass">{{stu.password}}</td>
                                 <td class="action">
-                                    <button class="btn"><a href="{% url 'data:update' stu.id %}">Edit</a></button>
-                                    <button class="btn"><a href="{% url 'data:delete' stu.id %}">Delete</a></button>
+                                    <button class="btn"><a style = "text-decoration:none; color:white;" href="{% url 'data:update' stu.id %}">Edit</a></button>
+                                    <button class="btn"><a style = "text-decoration:none; color:white;" href="{% url 'data:delete' stu.id %}">Delete</a></button>
                                 </td>  
                             </tr> 
                             
                             {% endfor %}
-                            {% else %}
-                            <tr>
+                            {% comment %} {% else %} {% endcomment %}
+                            {% comment %} <tr>
                                 <td colspan = '5' rowspan = '5' style = "color:red; text-align:center;">No students added at ! Add some </td>
                             </tr>
                            
-                            {% endif %}
+                            {% endif %} {% endcomment %}
                         </tbody>
                     </table>
                 </div>

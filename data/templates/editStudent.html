@@ -18,7 +18,7 @@
                 {{ form.non_field_errors}}
                 {% for field in fm %}
                 <div><label for="name"  style="float:left; margin-left: 80px;">{{field.label_tag}} </label> <br>
-                    {{field}} {{field.errors|striptags}}
+                    {{field}} <span style = "color:red; font-size:0.6em; font-weight:italic;">{{field.errors|striptags}}</span>
                 {% comment %} <input type="text" placeholder="Enter Full Name" name="name" id="name"> {% endcomment %}
             </div>
             {% endfor %}
@@ -30,7 +30,7 @@
             </div> {% endcomment %}
 
             <div class="buttons">
-            <button style="display: inline; background-color: brown; padding: 2px 10px; border-radius: 7px; margin-right: 1px;" class=""><a style=" color: white; text-decoration: none;" href="{% url 'data:home' %}">Cancel</a></button>
+            <button style="display: inline; background-color: brown; padding: 2px 10px; border-radius: 7px; margin-right: 5px;" class=""><a style=" color: white; text-decoration: none;" href="{% url 'data:home' %}">Cancel</a></button>
             <button class="btn" type="submit" style="display: inline;">Update</button>
         </div>
         </form>
